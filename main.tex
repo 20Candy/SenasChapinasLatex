@@ -35,6 +35,7 @@
 % \usepackage{bookmark}
 \usepackage{subcaption}
 \usepackage{babelbib}
+\usepackage[bottom]{footmisc}
 \ifdefined\usarAPA 
 	\usepackage{apacite} 
 \fi
@@ -365,28 +366,14 @@
 % --------------------------------------------------------------------------------
 \ifdefined\CAPanexos
 	\newpage
-    \cleardoublepage\phantomsection
-%     \begin{center}
-%     	\vspace*{\fill}
-%     	\Huge Anexos
-%     	\vspace*{\fill}
-%     \end{center}
-    \addcontentsline{toc}{chapter}{Anexos}
-    \renewcommand{\chaptername}{Anexo}
-    \setcounter{chapter}{0}
-	\renewcommand{\thechapter}{\Alph{chapter}}
+	\chapter*{Anexos} % Cambiamos a chapter* para que no lleve numeración
+	\addcontentsline{toc}{chapter}{Anexos} % Agregar 'Anexos' al índice sin numeración
 	\ifdefined\parpordefecto
-    	\defaultparformat{anexos}
-    \else
-    	\input{anexos}
-    \fi
+		\defaultparformat{anexos}
+	\else
+		\input{anexos}
+	\fi
 \fi
 
-% GLOSARIO
-% --------------------------------------------------------------------------------
-\ifdefined\CAPglosario
-	\newpage
-	\printglossary
-\fi
 
 \end{document}
