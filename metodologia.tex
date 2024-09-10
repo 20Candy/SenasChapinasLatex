@@ -248,7 +248,7 @@ Además, Gabriela espera que la aplicación le sirva como una herramienta para e
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.5\linewidth]{entrevista.png}
+    \includegraphics[width=0.5\linewidth]{figuras/entrevista.png}
     \caption{Entrevista En-Señas}
     \label{fig:enter-label}
 \end{figure}
@@ -1317,6 +1317,190 @@ Asimismo, se realizaron ajustes para adaptar la aplicación a diferentes largos 
 
 \section{DESARROLLO MÓVIL}
 
+\subsection{Descripción General del Desarrollo Móvil}
+
+La aplicación ``Señas Chapinas'' está desarrollada para dispositivos \textit{Android} utilizando \texttt{Java} para la lógica y el desarrollo principal. Se busca ofrecer una experiencia de usuario intuitiva y accesible, utilizando arquitecturas modernas y prácticas eficientes para garantizar un rendimiento óptimo.
+
+En cuanto al diseño de la interfaz, se optó por el uso de \texttt{XML} en lugar de \texttt{Jetpack Compose}. Este enfoque fue elegido por su madurez, estabilidad y la familiaridad que ofrece a los desarrolladores. Además, \texttt{XML-based UI} permite un mayor control sobre el diseño de las pantallas y una fácil integración con herramientas como \texttt{View Binding} \cite{DeLaGrana2024}.
+
+Para facilitar la vinculación entre las vistas y el código, se utilizó \texttt{View Binding}. Esta herramienta elimina la necesidad de métodos como \texttt{findViewById()}, mejorando la eficiencia y reduciendo errores al acceder a los elementos de la interfaz directamente desde el código \cite{Ozaltun2022}.
+
+La estructura de la aplicación está centrada en un único \texttt{MainActivity}, que gestiona la navegación entre \textit{Home}, \textit{Traducción}, \textit{Diccionario}, y \textit{Perfil} mediante \texttt{NavController} y gráficos de navegación (\texttt{NavGraphs}) independientes para cada sección. Esta decisión permite mantener un código más ordenado y modular, al mismo tiempo que se simplifica la navegación dentro de la aplicación, evitando la complejidad que supondría utilizar varios \texttt{Activities}.
+
+La aplicación incluye un \texttt{Bottom Navigation Menu} para facilitar la navegación entre las diferentes secciones. Este menú se sincroniza con el \texttt{NavController} para permitir transiciones fluidas entre los diferentes \texttt{Fragments} de la aplicación.
+
+% -----------------------------------------------------------------
+
+\subsection{Tecnologías y Librerías}
+
+La aplicación utiliza una variedad de librerías modernas para optimizar su rendimiento y funcionalidad:
+
+\begin{itemize}
+    \item \texttt{AndroidX:} Para garantizar compatibilidad y soporte con las versiones más recientes de Android, así como un diseño visual coherente y moderno.
+    \item \texttt{View Binding:} Para gestionar de manera eficiente la vinculación de vistas.
+    \item \texttt{SharedPreferences:} Utilizado para almacenar configuraciones del usuario, como el estado de inicio de sesión, de manera persistente entre las sesiones de uso de la aplicación.
+    \item \texttt{LiveData y ViewModel:} Cada Fragment tiene su propio ViewModel para gestionar de forma eficiente los cambios de estado y lógica de la interfaz de usuario.
+    \item \texttt{Navigation Component:} Para gestionar la navegación entre Fragments de manera flexible y organizada.
+    \item \texttt{Glide:} Para la carga y manipulación de imágenes de forma eficiente.
+    \item \texttt{CameraX:} Para implementar funcionalidades relacionadas con la captura de video.
+    \item \texttt{ExoPlayer:} Para la reproducción de videos de alta calidad dentro de la aplicación.
+    \item \texttt{Gson:} Para la serialización y deserialización de datos JSON.
+    \item \texttt{Lottie:} Para integrar animaciones ligeras y dinámicas en la interfaz de usuario.
+\end{itemize}
+
+% -----------------------------------------------------------------
+
+\subsection{Arquitectura del Proyecto}
+
+El proyecto sigue el patrón arquitectónico \textit{Model-View-ViewModel} (MVVM) para organizar el código de manera eficiente y mantener la separación de responsabilidades entre la lógica de negocio, la interfaz de usuario y la manipulación de los datos.
+
+\subsubsection{Organización de la Aplicación}
+
+La aplicación se gestiona con una única \texttt{MainActivity}, que centraliza la navegación y la interacción del usuario. Cada una de las secciones principales de la aplicación (\textit{Home}, \textit{Traducción}, \textit{Diccionario}, y \textit{Perfil}) cuenta con su propio \texttt{NavGraph} para gestionar de forma modular y ordenada los flujos de navegación entre los diferentes \texttt{Fragments}. Este enfoque permite que las diferentes secciones se mantengan independientes, favoreciendo el mantenimiento y escalabilidad del código.
+
+\subsubsection{Gestión de Estados}
+
+Cada \texttt{Fragment} extiende de un \texttt{BaseFragment}, que contiene la lógica compartida entre ellos, como la navegación, la gestión de diálogos personalizados y el manejo de la barra de navegación inferior. Además, cada \texttt{Fragment} cuenta con su propio \texttt{ViewModel}, que hereda de un \texttt{BaseViewModel}. Esto permite gestionar los cambios de estado y lógica específicos de cada pantalla de forma eficiente y organizada, manteniendo los datos y los cambios de estado en el ciclo de vida adecuado, independientemente de los cambios en la interfaz.
+
+\subsubsection{Navegación}
+
+La navegación en la aplicación es gestionada mediante el componente \textit{Navigation Component}, y las transiciones entre los \texttt{Fragments} se gestionan a través de un \texttt{NavController} central, que se sincroniza con el \texttt{Bottom Navigation Menu} para ofrecer una experiencia de usuario fluida. Este enfoque también simplifica el manejo del historial de navegación, permitiendo una interacción más intuitiva para el usuario.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figuras/navegacion_principal.png}
+    \caption{Navegación Principal}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figuras/navegacion_video.png}
+    \caption{Navegación Video}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figuras/navegacion_perfil.png}
+    \caption{Navegación Perfil}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figuras/diccionario.png}
+    \caption{Diccionario}
+    \label{fig:enter-label}
+\end{figure}
+
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{figuras/tarduccion.png}
+    \caption{Traducción}
+    \label{fig:enter-label}
+\end{figure}
+
+
+% ----------------------------------------------
+
+\subsection{Componentes Reutilizables}
+
+En el desarrollo de la aplicación móvil , se ha implementado una serie de componentes reutilizables con el objetivo de mantener un código más modular, flexible y fácil de mantener. A continuación se describen algunos de los componentes más importantes:
+
+\begin{itemize}
+    \item \textbf{DebounceClickListener:} Este componente evita múltiples clics en un corto periodo de tiempo sobre un mismo botón, lo cual es útil en situaciones donde los usuarios pueden hacer clic repetidamente. El \texttt{DebounceClickListener} permite que solo se ejecute la acción del clic una vez dentro de un intervalo de tiempo definido, mejorando la experiencia de usuario y previniendo errores.
+
+    \item \textbf{Interfaz para todos los botones:} Para garantizar consistencia y facilitar la extensión de funcionalidades, se implementó una interfaz común para todos los botones de la aplicación. Esta interfaz define métodos para habilitar o deshabilitar los botones, cambiar su estilo y gestionar eventos de clic de manera uniforme.
+
+    \item \textbf{TransparentButton y MainButton:} Son dos variantes de botones reutilizables. El \texttt{\allowdisplaybreaks{Transpa\-rentButton}} se utiliza principalmente para botones secundarios, donde el fondo es transparente pero el borde y el texto son visibles. Por otro lado, el \texttt{MainButton} es para botones primarios con fondo sólido y mayor visibilidad. Ambos botones mantienen un estilo consistente en la aplicación y se pueden personalizar según el contexto.
+
+
+    \item \textbf{CustomDialogFragment:} Este componente es una implementación personalizada de un \texttt{DialogFragment}, utilizado para mostrar diálogos de manera consistente en toda la aplicación. \texttt{CustomDialogFragment} permite personalizar el contenido, la apariencia y las acciones disponibles para el usuario, como confirmaciones o advertencias.
+
+    \item \textbf{Interfaz para todos los Inputs:} Se creó una interfaz común para los campos de entrada (\textit{inputs}) de la aplicación, lo que asegura un comportamiento coherente en todos los campos de texto. Esto facilita la validación de datos y el manejo de errores, reduciendo la duplicación de código y mejorando la consistencia visual y funcional.
+
+    \item \textbf{InputEmail:} Componente especializado en la validación de correos electrónicos, asegurando que el usuario ingrese una dirección válida. \texttt{InputEmail} detecta errores comunes, como la falta de un símbolo "\texttt{@}" o un dominio incorrecto, e incluye retroalimentación visual para guiar al usuario.
+
+    \item \textbf{InputPassword:} Este componente incluye validaciones centradas en la seguridad, como la longitud mínima de la contraseña, y permite mostrar u ocultar los caracteres ingresados. Esto ayuda al usuario a verificar visualmente su contraseña sin comprometer la seguridad.
+
+    \item \textbf{BottomNavMenu:} Este componente gestiona la navegación entre las principales secciones de la aplicación (\textit{Home}, \textit{Traducción}, \textit{Diccionario}, \textit{Perfil}) mediante una barra de navegación inferior. El \texttt{BottomNavMenu} se integra con el \texttt{NavController}, permitiendo transiciones fluidas entre los diferentes \texttt{Fragments}.
+
+    \item \textbf{CustomProgressBarDialog:} Diálogo personalizado utilizado para mostrar una barra de progreso durante operaciones que pueden tomar tiempo, como la carga de datos. Proporciona una retroalimentación visual clara de las acciones que se están ejecutando en segundo plano.
+\end{itemize}
+
+La creación de estos componentes reutilizables asegura que la aplicación mantenga una estructura limpia y eficiente. Además, facilita realizar modificaciones o mejoras sin tener que duplicar código, permitiendo la escalabilidad del proyecto y asegurando que los cambios se propaguen de manera consistente en toda la aplicación.
+
+
+% ----------------------------------------------
+
+\subsection{Implementación de Seguridad}
+
+\textbf{Autenticación:} El sistema de autenticación de la aplicación se maneja a través de un servicio externo, el cual garantiza la seguridad en el manejo de credenciales y datos sensibles. Las funciones de inicio de sesión y registro están integradas de forma segura mediante API externas.
+
+\textbf{Cifrado:} Los datos del usuario, incluyendo preferencias de configuración y estado de inicio de sesión, se almacenan de forma segura utilizando \textit{SharedPreferences} cifrados. Esto garantiza que la información personal del usuario se mantenga protegida incluso cuando se almacena localmente en el dispositivo.
+
+\textbf{Permisos:} La aplicación solicita únicamente el permiso para acceder a la cámara, utilizado durante la grabación de videos para traducir a LENSEGUA. Este permiso se solicita solo cuando el usuario accede a la funcionalidad de grabación y se puede revocar en cualquier momento desde la configuración del dispositivo.
+
+\textbf{Acceso y Control de los Videos:} Los videos grabados se manejan temporalmente en la \textit{caché} de la aplicación, donde se almacenan mientras el usuario decide si desea guardarlos o eliminarlos. Estos videos solo se almacenan en el servidor si el usuario elige explícitamente la opción de \textit{guardar}. En caso de que el usuario opte por eliminarlos, se borran tanto del dispositivo como del servidor, garantizando el control total de los videos por parte del usuario.
+
+
+% ----------------------------------------------
+\subsection{Desafíos Técnicos y Soluciones}
+
+Uno de los principales desafíos técnicos enfrentados durante el desarrollo de la aplicación fue la implementación de la funcionalidad de grabación de video. A continuación, se detallan los problemas específicos encontrados y las soluciones implementadas:
+
+\begin{enumerate}
+    \item \textbf{Manejo de permisos:} Al ser una funcionalidad que requiere el uso de la cámara, fue necesario gestionar los permisos de acceso de manera adecuada. Para asegurar que el permiso de la cámara fuera solicitado de forma eficiente y solo cuando se necesitara, se implementó un sistema que solicitaba el permiso en el momento preciso y permitía al usuario revocarlo fácilmente desde la configuración del dispositivo.
+
+    \item \textbf{Corrección de la deformación del video:} Inicialmente, los videos grabados aparecían estirados o alargados en ciertas pantallas. Para resolver este problema, se integró la librería \texttt{CameraX}, que permite un mejor manejo de la cámara en dispositivos Android, asegurando que los videos mantuvieran sus proporciones correctas independientemente de la resolución del dispositivo.
+
+    \item \textbf{Botón de grabación personalizado:} Se diseñó un componente propio para el botón de grabación que muestra visualmente el progreso de tiempo durante la grabación, con un límite máximo de 15 segundos. Este botón fue implementado desde cero, utilizando animaciones que indicaban al usuario cuánto tiempo de grabación le quedaba antes de alcanzar el límite máximo.
+
+    \item \textbf{Almacenamiento temporal del video:} Para facilitar el flujo de la aplicación entre los diferentes fragmentos, fue necesario almacenar el video temporalmente. Para evitar solicitar permisos adicionales al usuario, el video se guardó en la caché local de la aplicación, lo que permite que el video esté disponible sin la necesidad de acceder al almacenamiento externo del dispositivo.
+
+    \item \textbf{Reproducción del video:} Al mostrar el video en la aplicación, surgieron problemas de deformación o errores al cargar los archivos de video. Para garantizar una reproducción fluida y eficiente, se decidió utilizar la librería \texttt{ExoPlayer}. Esta herramienta no solo resolvió los problemas de visualización, sino que también resultó ser más óptima en cuanto a rendimiento, asegurando que los videos se cargaran correctamente y se mostraran sin distorsiones.
+\end{enumerate}
+
+
+% ----------------------------------------------
+
+\subsection{Implementación de Servicios}
+PENDIENTE
+
+% ----------------------------------------------
+
+\subsection{Uso de Kanban}
+
+En el desarrollo de la aplicación Señas Chapinas UVG, se utilizó un sistema Kanban para la gestión y organización de tareas, facilitando un flujo de trabajo visual y eficiente. Aunque el desarrollo fue llevado a cabo de manera individual, este enfoque permitió organizar de forma clara las tareas y priorizar los entregables según las necesidades del proyecto.
+
+El sistema Kanban se organizó en historias de usuario, donde cada una representaba una tarea específica del proyecto. Cada historia incluía una descripción detallada para asegurarse de que no se perdiera ningún detalle importante durante la implementación.
+
+\begin{figure}  [H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figuras/kabana_ejemplo.png}
+    \caption{Ejemplo Historia Usuario}
+    \label{fig:enter-label}
+\end{figure}
+
+
+Las fases del proyecto incluyeron:
+
+\begin{itemize}
+    \item \textbf{Arquitectura:} Se planificó y diseñó la estructura principal del proyecto, incluyendo la implementación de patrones de diseño y la creación del \texttt{MainActivity} y los \texttt{NavGraphs}.
+    \item \textbf{Pantallas principales:} El desarrollo de pantallas se realizó de manera secuencial, comenzando por Sign Up, Login, Home, Vídeo, Reporte, Traductor, Diccionario, Perfil, Configuración, Reto Diario y Cambio de Contraseña. Cada pantalla fue gestionada como una tarea independiente dentro del sistema Kanban, lo que permitió un avance estructurado en el desarrollo.
+    \item \textbf{Componentes:} Esta fase involucró la creación de componentes reutilizables que se aplicaron a lo largo de toda la aplicación, como botones y campos de texto personalizados.
+\end{itemize}
+
+El uso de Kanban permitió mantener una organización eficiente del trabajo, identificando posibles cuellos de botella y ajustando el cronograma de desarrollo de manera efectiva. De esta forma, se logró avanzar de manera rápida y adaptable a los cambios y solicitudes durante el proceso.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{figuras/kanban.png}
+    \caption{Cronograma Kanban}
+    \label{fig:enter-label}
+\end{figure}
 
 
 
@@ -1325,9 +1509,9 @@ Asimismo, se realizaron ajustes para adaptar la aplicación a diferentes largos 
 \section{PRUEBAS CON USUARIOS FINALES}
 
 
-\subsubsection{Primera Prueba - Expo UVG}
+\subsection{Primera Prueba - \textit{EXPO UVG}}
 
-Después de programar las pantallas para Android, se tuvo la oportunidad de presentar el proyecto en la Expo de la UVG. Durante la exposición, tanto usuarios como expertos en diseño ofrecieron recomendaciones que fueron implementadas tanto a nivel de diseño como en el funcionamiento de la aplicación:
+Después de programar las pantallas para \textit{Android}, se tuvo la oportunidad de presentar el proyecto en la \textit{Expo} de la UVG. Durante la exposición, tanto usuarios como expertos en diseño ofrecieron recomendaciones que fueron implementadas tanto a nivel de diseño como en el funcionamiento de la aplicación:
 
 
 \begin{figure} [H]
@@ -1353,4 +1537,4 @@ Después de programar las pantallas para Android, se tuvo la oportunidad de pres
     \label{fig:enter-label}
 \end{figure}
 
-
+\subsection{Segunda Prueba - \textit{En-Señas}}
