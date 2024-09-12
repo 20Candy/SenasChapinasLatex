@@ -1251,7 +1251,7 @@ Este primer prototipo tiene como objetivo demostrar la funcionalidad general de 
     
     \item \textbf{Perfil del Usuario:} Muestra una imagen de perfil, el nombre del usuario y un contador de días consecutivos de desafíos completados. También incluye un ícono de configuración en la parte superior para acceder a ajustes. La pantalla presenta una barra de pestañas que permite alternar entre los videos favoritos y las traducciones favoritas.
     
-    \item \textbf{Configuraciones:} Ofrece opciones para cambiar la contraseña, cerrar sesión, eliminar la cuenta y acceder a información sobre la aplicación. También permite activar o desactivar los retos diarios, ver un tutorial y consultar la versión actual de la app.
+    \item \textbf{Configuraciones:} Ofrece opciones para cambiar la contraseña, cerrar sesión, eliminar la cuenta y acceder a información sobre la aplicación. También permite activar o desactivar los retos diarios y consultar la versión actual de la aplicación.
     
     \item \textbf{Retos Diarios:} Presenta cuatro imágenes como opciones de respuesta para una palabra en LENSEGUA. El usuario puede elegir una respuesta, o bien, cerrar u omitir el reto. Las opciones se presentan en un diálogo interactivo.
 \end{itemize}
@@ -1286,7 +1286,7 @@ El tercer prototipo muestra ya el diseño completo de la aplicación, para ver m
   
     \item \textbf{Pantalla de Inicio:} En la parte superior se muestra el logo y el nombre, seguido por el eslogan en español y LENSEGUA. También se incluyen los botones ``Empezar Ahora'', que lleva a la creación de cuenta, y ``Ya tengo una cuenta'', para iniciar sesión.
   
-    \item \textbf{Creación de Cuenta:} El logo y el nombre se presentan en la parte superior azul, mientras que en la parte inferior blanca se muestran los campos para ingresar el correo, la contraseña y la confirmación de contraseña. Se incluyen dos botones:``Empezar Ahora'', que continúa con el flujo, y ``Ya tengo una cuenta'', para redirigir al login.
+    \item \textbf{Creación de Cuenta:} El logo y el nombre se presentan en la parte superior azul, mientras que en la parte inferior blanca se muestran los campos para ingresar el correo, la contraseña y la confirmación de contraseña. Se incluyen dos botones: ``Empezar Ahora'', que continúa con el flujo, y ``Ya tengo una cuenta'', para redirigir al login.
   
     \item \textbf{Grabación de Video:} Muestra la simulación de la toma de video, con un botón de grabación al centro y una barra de navegación inferior que incluye las opciones de video, traducción, diccionario y perfil.
 
@@ -1296,17 +1296,17 @@ El tercer prototipo muestra ya el diseño completo de la aplicación, para ver m
 
     \item \textbf{Traductor:} A diferencia del primer prototipo, se introduce un fondo azul en el área de ingreso de texto en LENSEGUA y un fondo blanco para el texto traducido en español. Se ha añadido un límite máximo de palabras para ingresar, a solicitud del equipo de inteligencia artificial. Al igual que en el primer prototipo, el botón de traducir es verde, para resaltar la acción. Este permanece deshabilitado hasta que el usuario ingrese texto en LENSEGUA. Al hacer clic en el botón de traducir, se bloquea la edición del texto en LENSEGUA, y el botón cambia a "Nueva Traducción". Posteriormente, se muestra la traducción en español y las opciones para copiar, usar el altavoz y agregar a favoritos, manteniendo el uso de iconografía en lugar de texto.
 
-    \item \textbf{Diccionario:} El diseño de las tarjetas ha cambiado ligeramente en comparación con el primer prototipo. Ahora se incluye un ícono que indica que la tarjeta se puede voltear, y se ha reducido el redondeado y sombreado de las tarjetas. La barra de búsqueda se mantiene en la parte superior. En las categorías, se ha agregado la sección de favoritos con un ícono de corazón, manteniendo la coherencia de la app, donde los favoritos siempre se representan con un corazón. También se ha incorporado un estado vacío \textit{(empty state)} para cuando no haya resultados en la búsqueda o no se hayan guardado favoritos.
+    \item \textbf{Diccionario:} El diseño de las tarjetas ha cambiado ligeramente en comparación con el primer prototipo. Ahora se incluye un ícono que indica que la tarjeta se puede voltear, y se ha reducido el redondeado y sombreado de las tarjetas. La barra de búsqueda se mantiene en la parte superior. En las categorías, se ha agregado la sección de favoritos con un ícono de corazón, manteniendo la coherencia de la aplicación, donde los favoritos siempre se representan con un corazón. También se ha incorporado un estado vacío \textit{(empty state)} para cuando no haya resultados en la búsqueda o no se hayan guardado favoritos.
 
     \item \textbf{Perfil:} A diferencia del primer prototipo, donde el usuario podía seleccionar su propia imagen de perfil, se decidió que la aplicación asignará un color al quetzal del logo, para cada usuario. Se sigue mostrando el nombre del usuario y la racha de desafíos en la parte inferior de la imagen de perfil. Además, el diseño de los favoritos, tanto de videos como de traducciones, ha sido ajustado para añadir más formalidad y dinamismo a la aplicación. También se incluyen flujos para borrar favoritos y pantallas de estado vacío cuando no haya favoritos guardados.
 
-    \item \textbf{Configuración:} El diseño de la sección de configuración ha cambiado respecto al primer prototipo. Ahora incluye subconjuntos de opciones e iconografía para facilitar la navegación del usuario. Además, se ha añadido el flujo de eliminación de cuenta, que se muestra mediante un bottom sheet con un título en rojo, dado que es una acción crítica. El diseño de la sección ``Acerca de la Aplicación'' también ha sido ajustado ligeramente y se han añadido los colaboradores.
+    \item \textbf{Configuración:} El diseño de la sección de configuración ha cambiado respecto al primer prototipo. Ahora incluye subconjuntos de opciones e iconografía para facilitar la navegación del usuario. Además, se ha añadido el flujo de eliminación de cuenta, que se muestra mediante un \textit{bottom sheet} con un título en rojo, dado que es una acción crítica. El diseño de la sección ``Acerca de la Aplicación'' también ha sido ajustado ligeramente y se han añadido los colaboradores.
 
     \item \textbf{Reto Diario:} El diseño de la pantalla de retos diarios fue uno de los más desafiantes, ya que no se sabía cómo proporcionar retroalimentación clara cuando el usuario seleccionaba una opción incorrecta, ni cómo manejar las rachas de forma visual. Finalmente, se decidió por una pantalla que en la parte superior muestra la racha actual, un título llamativo, y la palabra objetivo a seleccionar en las tarjetas. Las tarjetas utilizan colores pastel, y en la parte inferior se encuentra la opción de omitir. Cuando la respuesta es correcta, se añade un punto a la racha y aparece una animación de confeti. Si la respuesta es incorrecta, la racha se restablece a cero, el ícono de la racha cambia de color, y se muestra un mensaje para motivar al usuario a intentarlo de nuevo. La tarjeta correcta se muestra en un color más claro que las demás después de que el usuario haya seleccionado una opción. A diferencia del primer prototipo, esta es una pantalla completa y no un modal.
 
      \item \textbf{Cambio de Contraseña:} Al igual que en el primer prototipo, se muestra el flujo para cambiar la contraseña utilizando el mismo diseño empleado en las pantallas de inicio de sesión y creación de cuenta, manteniendo una coherencia visual en toda la aplicación.
 
-    \item \textbf{Diálogos Adicionales:} Se han integrado diálogos estándar para mostrar mensajes, como alertas de error, y un loader para indicar la ejecución de llamadas a servicios. 
+    \item \textbf{Diálogos Adicionales:} Se han integrado diálogos estándar para mostrar mensajes, como alertas de error, y un \textit{loader} para indicar la ejecución de llamadas a servicios. 
         
 \end{itemize}
 
@@ -1325,7 +1325,7 @@ Después de presentar el prototipo a expertos en tecnología y usuarios finales,
 \begin{itemize}
     \item \textbf{Pantalla de Creación de Cuenta:} Se eliminó el campo de confirmación de contraseña. En su lugar, se añadió un icono de ojo en el campo de contraseña para mostrar u ocultar la misma, permitiendo que el usuario confirme su contraseña sin necesidad de un campo adicional. Además, se implementaron validaciones de longitud y caracteres necesarios para cumplir con los requisitos de seguridad.
     
-    \item \textbf{Pantalla de Inicio de Sesión:} Se agregó un campo para "Olvidé mi contraseña", facilitando a los usuarios la recuperación de su contraseña.
+    \item \textbf{Pantalla de Inicio de Sesión:} Se agregó un campo para ``Olvidé mi contraseña'', facilitando a los usuarios la recuperación de su contraseña.
     
     \item \textbf{Pantalla de Inicio:} Se introdujo la opción para que los usuarios elijan si desean activar su cámara al iniciar la aplicación. Si optan por no hacerlo, aparece una pantalla gris temporal que incentiva al usuario a abrir su cámara mediante un botón en la parte inferior. Esta configuración se puede ajustar en las opciones de la aplicación. Además, se añadió una pantalla de solicitud de permisos.
     
@@ -1339,7 +1339,7 @@ Después de presentar el prototipo a expertos en tecnología y usuarios finales,
     
     \item \textbf{Pantalla de Configuraciones:} Se añadió una opción para activar la cámara al iniciar la aplicación.
     
-    \item \textbf{Pantalla de Reto Diario:} El funcionamiento de esta pantalla fue modificado respecto al prototipo anterior. Ahora, cuando el usuario selecciona una opción incorrecta, esta se torna más pálida y vibra. Cuando selecciona la opción correcta, las demás opciones se atenúan, destacando la respuesta correcta. Esto garantiza que el usuario siempre aprenda cuál es la opción correcta y no se frustre al perder su racha, ya que la única forma de perder es no completar el reto diario. Se agregó un botón de cerrar para regresar a la pantalla de inicio.
+    \item \textbf{Pantalla de Reto Diario:} El funcionamiento de esta pantalla fue modificado respecto al prototipo anterior. Ahora, cuando el usuario selecciona una opción incorrecta, esta se torna más pálida y vibra. Cuando selecciona la opción correcta, las demás opciones se atenúan, destacando la respuesta correcta y se muestra animación de confeti. Esto garantiza que el usuario siempre aprenda cuál es la opción correcta y no se frustre al perder su racha, ya que la única forma de perder es no completar el reto diario. Se agregó un botón de cerrar para regresar a la pantalla de inicio.
 \end{itemize}
 
 Asimismo, se realizaron ajustes para adaptar la aplicación a diferentes largos de texto. Se efectuaron algunos cambios en el tamaño del texto, el reposicionamiento de iconos, y otros ajustes menores, todo ello con el fin de optimizar la legibilidad y la usabilidad en diversos dispositivos.
@@ -1362,7 +1362,7 @@ Asimismo, se realizaron ajustes para adaptar la aplicación a diferentes largos 
 
 La aplicación ``Señas Chapinas'' está desarrollada para dispositivos \textit{Android} utilizando \texttt{Java} para la lógica y el desarrollo principal. Se busca ofrecer una experiencia de usuario intuitiva y accesible, utilizando arquitecturas modernas y prácticas eficientes para garantizar un rendimiento óptimo.
 
-En cuanto al diseño de la interfaz, se optó por el uso de \texttt{XML} en lugar de \texttt{Jetpack Compose}. Este enfoque fue elegido por su madurez, estabilidad y la familiaridad que ofrece a los desarrolladores. Además, \texttt{XML-based UI} permite un mayor control sobre el diseño de las pantallas y una fácil integración con herramientas como \texttt{View Binding} \cite{DeLaGrana2024}.
+En cuanto al diseño de la interfaz, se optó por el uso de \texttt{XML-based UI} en lugar de \texttt{Jetpack Compose}. Este enfoque fue elegido por su madurez, estabilidad y la familiaridad que ofrece a los desarrolladores. Además, \texttt{XML-based UI} permite un mayor control sobre el diseño de las pantallas y una fácil integración con herramientas como \texttt{View Binding} \cite{DeLaGrana2024}.
 
 Para facilitar la vinculación entre las vistas y el código, se utilizó \texttt{View Binding}. Esta herramienta elimina la necesidad de métodos como \texttt{findViewById()}, mejorando la eficiencia y reduciendo errores al acceder a los elementos de la interfaz directamente desde el código \cite{Ozaltun2022}.
 
@@ -1380,12 +1380,12 @@ La aplicación utiliza una variedad de librerías modernas para optimizar su ren
     \item \texttt{AndroidX:} Para garantizar compatibilidad y soporte con las versiones más recientes de Android, así como un diseño visual coherente y moderno.
     \item \texttt{View Binding:} Para gestionar de manera eficiente la vinculación de vistas.
     \item \texttt{SharedPreferences:} Utilizado para almacenar configuraciones del usuario, como el estado de inicio de sesión, de manera persistente entre las sesiones de uso de la aplicación.
-    \item \texttt{LiveData y ViewModel:} Cada Fragment tiene su propio ViewModel para gestionar de forma eficiente los cambios de estado y lógica de la interfaz de usuario.
-    \item \texttt{Navigation Component:} Para gestionar la navegación entre Fragments de manera flexible y organizada.
+    \item \texttt{LiveData y ViewModel:} Cada  \texttt{Fragment} tiene su propio  \texttt{ViewModel} para gestionar de forma eficiente los cambios de estado y lógica de la interfaz de usuario.
+    \item \texttt{Navigation Component:} Para gestionar la navegación entre  \texttt{Fragments} de manera flexible y organizada.
     \item \texttt{Glide:} Para la carga y manipulación de imágenes de forma eficiente.
     \item \texttt{CameraX:} Para implementar funcionalidades relacionadas con la captura de video.
     \item \texttt{ExoPlayer:} Para la reproducción de videos de alta calidad dentro de la aplicación.
-    \item \texttt{Gson:} Para la serialización y deserialización de datos JSON.
+    \item \texttt{Gson:} Para la serialización y deserialización de datos \texttt{JSON}.
     \item \texttt{Lottie:} Para integrar animaciones ligeras y dinámicas en la interfaz de usuario.
 \end{itemize}
 
@@ -1462,7 +1462,7 @@ En el desarrollo de la aplicación móvil , se ha implementado una serie de comp
 
     \item \textbf{Interfaz para todos los Inputs:} Se creó una interfaz común para los campos de entrada (\textit{inputs}) de la aplicación, lo que asegura un comportamiento coherente en todos los campos de texto. Esto facilita la validación de datos y el manejo de errores, reduciendo la duplicación de código y mejorando la consistencia visual y funcional.
 
-    \item \textbf{InputEmail:} Componente especializado en la validación de correos electrónicos, asegurando que el usuario ingrese una dirección válida. \texttt{InputEmail} detecta errores comunes, como la falta de un símbolo "\texttt{@}" o un dominio incorrecto, e incluye retroalimentación visual para guiar al usuario.
+    \item \textbf{InputEmail:} Componente especializado en la validación de correos electrónicos, asegurando que el usuario ingrese una dirección válida. \texttt{InputEmail} detecta errores comunes, como la falta de un símbolo ``\texttt{@}'' o un dominio incorrecto, e incluye retroalimentación visual para guiar al usuario.
 
     \item \textbf{InputPassword:} Este componente incluye validaciones centradas en la seguridad, como la longitud mínima de la contraseña, y permite mostrar u ocultar los caracteres ingresados. Esto ayuda al usuario a verificar visualmente su contraseña sin comprometer la seguridad.
 
@@ -1478,13 +1478,13 @@ La creación de estos componentes reutilizables asegura que la aplicación mante
 
 \subsection{Implementación de Seguridad}
 
-\textbf{Autenticación:} El sistema de autenticación de la aplicación se maneja a través de un servicio externo, el cual garantiza la seguridad en el manejo de credenciales y datos sensibles. Las funciones de inicio de sesión y registro están integradas de forma segura mediante API externas.
+\textbf{Autenticación:} El sistema de autenticación de la aplicación se maneja a través de un servicio externo, el cual garantiza la seguridad en el manejo de credenciales y datos sensibles. Las funciones de inicio de sesión y registro están integradas de forma segura mediante \textit{API} externas.
 
 \textbf{Cifrado:} Los datos del usuario, incluyendo preferencias de configuración y estado de inicio de sesión, se almacenan de forma segura utilizando \textit{SharedPreferences} cifrados. Esto garantiza que la información personal del usuario se mantenga protegida incluso cuando se almacena localmente en el dispositivo.
 
 \textbf{Permisos:} La aplicación solicita únicamente el permiso para acceder a la cámara, utilizado durante la grabación de videos para traducir a LENSEGUA. Este permiso se solicita solo cuando el usuario accede a la funcionalidad de grabación y se puede revocar en cualquier momento desde la configuración del dispositivo.
 
-\textbf{Acceso y Control de los Videos:} Los videos grabados se manejan temporalmente en la \textit{caché} de la aplicación, donde se almacenan mientras el usuario decide si desea guardarlos o eliminarlos. Estos videos solo se almacenan en el servidor si el usuario elige explícitamente la opción de \textit{guardar}. En caso de que el usuario opte por eliminarlos, se borran tanto del dispositivo como del servidor, garantizando el control total de los videos por parte del usuario.
+\textbf{Acceso y Control de los Videos:} Los videos grabados se manejan temporalmente en la \textit{caché} de la aplicación, donde se almacenan mientras el usuario decide si desea guardarlos o eliminarlos. Estos videos solo se almacenan en el servidor si el usuario elige explícitamente la opción de \textit{guardar}. En caso de que el usuario opte por eliminarlos, se borran tanto del dispositivo como del servidor, garantizando el control total de los videos por parte del usuario y su seguridad.
 
 
 % ----------------------------------------------
@@ -1514,7 +1514,7 @@ PENDIENTE
 
 \subsection{Uso de Kanban}
 
-En el desarrollo de la aplicación Señas Chapinas UVG, se utilizó un sistema Kanban para la gestión y organización de tareas, facilitando un flujo de trabajo visual y eficiente. Aunque el desarrollo fue llevado a cabo de manera individual, este enfoque permitió organizar de forma clara las tareas y priorizar los entregables según las necesidades del proyecto.
+En el desarrollo de la aplicación ``Señas Chapinas", se utilizó un sistema Kanban\footnote{Kanban es un método visual para la gestión de proyectos que utiliza tarjetas para representar las tareas y columnas para mostrar las etapas del trabajo \cite{asana2024}.} para la gestión y organización de tareas, facilitando un flujo de trabajo visual y eficiente. Aunque el desarrollo fue llevado a cabo de manera individual, este enfoque permitió organizar de forma clara las tareas y priorizar los entregables según las necesidades del proyecto.
 
 El sistema Kanban se organizó en historias de usuario, donde cada una representaba una tarea específica del proyecto. Cada historia incluía una descripción detallada para asegurarse de que no se perdiera ningún detalle importante durante la implementación.
 
