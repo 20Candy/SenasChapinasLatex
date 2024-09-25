@@ -1387,6 +1387,7 @@ La aplicación utiliza una variedad de librerías modernas para optimizar su ren
     \item \texttt{ExoPlayer:} Para la reproducción de videos de alta calidad dentro de la aplicación.
     \item \texttt{Gson:} Para la serialización y deserialización de datos \texttt{JSON}.
     \item \texttt{Lottie:} Para integrar animaciones ligeras y dinámicas en la interfaz de usuario.
+    \item \texttt{Retrofit:} Para la implementación de servicios. 
 \end{itemize}
 
 % -----------------------------------------------------------------
@@ -1507,8 +1508,346 @@ Uno de los principales desafíos técnicos enfrentados durante el desarrollo de 
 
 % ----------------------------------------------
 
+\subsection{Cambio de contraseña y Deeplinks}
+
+Con el objetivo de facilitar a los usuarios la posibilidad de cambiar su contraseña de manera sencilla y directa, se implementó un flujo utilizando \textit{deep links} en la aplicación ``Señas Chapinas''. Un \textit{deep link }es una \textit{URL} especial que permite abrir una aplicación móvil directamente a una pantalla específica, pasando parámetros que la aplicación puede utilizar para mostrar contenido personalizado o realizar ciertas acciones \cite{meijomil2024}. En este proyecto, el uso del \textit{deep link} permite que, al hacer clic en un enlace enviado por correo electrónico, el usuario sea llevado directamente a la pantalla de cambio de contraseña en la aplicación, con su correo ya preescrito para facilitar el proceso.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figuras/cambio_contra_flujo.png}
+    \caption{Flujo Cambio de Contraseña}
+    \label{fig:enter-label}
+\end{figure}
+
+
+\subsubsection*{Proceso de Desarrollo}
+\begin{itemize}
+    \item \textbf{Definición del Deep Link}: Primero, se configuró el deep link en el archivo \texttt{AndroidManifest.xml} de la aplicación. Esto incluyó definir el esquema del deep link (\texttt{senaschapinas://}), el host (\texttt{journeys}), y la ruta (\texttt{/cambio-contra}). Esta configuración permite que la aplicación reconozca y maneje los deep links que coincidan con este patrón.
+    
+    \item \textbf{Implementación en la Aplicación}: Dentro de la aplicación, se escribió la lógica necesaria para manejar el deep link. Esto implica capturar el intento cuando se abre la aplicación a través del deep link y extraer el parámetro del correo electrónico que se incluye en la URL del deep link. Luego, se navega automáticamente a la pantalla de cambio de contraseña, pasando el correo electrónico como parámetro para que se muestre preescrito.
+    
+    \item \textbf{Creación de la Página Intermedia}: Se desarrolló una página web alojada en\textit{ GitHub Pages}. Esta página tiene el propósito de redirigir al \textit{deep link} de la aplicación. Cuando el usuario accede a esta página, se ejecuta un \textit{script} que redirige automáticamente al \textit{ deep link} con el correo del usuario como parámetro. Esto permite que los enlaces en el correo electrónico sean \textit{URLs} estándar (\texttt{https://}), que son más confiables y compatibles con los clientes de correo electrónico.
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figuras/pagina_web_deeplink.png}
+            \caption{Deeplink página web}
+            \label{fig:enter-label}
+        \end{figure}
+        
+    
+    \item \textbf{Integración con Correo Electrónico}: Se diseñó un correo electrónico para la recuperación de contraseñas, el cual incluye un enlace que lleva a la página intermedia de \textit{GitHub Pages}. Este enlace contiene el correo electrónico del usuario como un parámetro en la \textit{URL}. Al hacer clic en este enlace, el usuario es redirigido automáticamente a la aplicación móvil ``Señas Chapinas'' mediante el \textit{deep link}, lo que lleva a la pantalla de cambio de contraseña con el correo preescrito.
+           
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{figuras/plantilla_correo.png}
+            \caption{Plantilla Correo}
+            \label{fig:enter-label}
+        \end{figure}
+    
+\end{itemize}
+
+
+La implementación de \textit{deep links} mejora la experiencia del usuario al simplificar el proceso de restablecimiento de contraseñas. Los usuarios no tienen que navegar manualmente a la pantalla correcta dentro de la aplicación ni ingresar su correo electrónico. Esto hace que el proceso sea más rápido, fácil y menos propenso a errores. Además, la utilización de una página web intermedia para redirigir al \textit{deep link} garantiza una mayor compatibilidad con diferentes clientes de correo electrónico y navegadores.
+
+
+
+% ----------------------------------------------
+
 \subsection{Implementación de Servicios}
-PENDIENTE
+
+Para implementar los servicios en nuestra aplicación móvil, hemos seguido un proceso estandarizado utilizando la librería \textit{Retrofit}. \textit{Retrofit} facilita la comunicación con el servidor, permitiendo realizar solicitudes \textit{HTTP/HTTPS} de forma eficiente y segura, ya que cifra las comunicaciones en tránsito. A continuación, se describe el proceso general de implementación:
+
+\subsubsection{Proceso de Implementación de Servicios con \textit{Retrofit}}
+
+\begin{enumerate}
+    \item \textbf{Definición de la API (\textit{Interface}):}
+    
+    \begin{itemize}
+        \item Creamos una interfaz para definir los \textit{endpoints} de la API. Aquí especificamos el tipo de solicitud \textit{(GET, POST, DELETE,} etc.), la ruta del endpoint, y los parámetros requeridos.
+    \end{itemize}
+
+    \item \textbf{Creación de las Clases Request y Response:}
+    \begin{itemize}
+        \item \textbf{Request:} Creamos una clase para representar el cuerpo de la solicitud. Incluye todos los parámetros necesarios que se enviarán al servidor.
+        \item \textbf{Response:} Creamos otra clase para modelar la respuesta del servidor. Esta clase contendrá los campos que el servidor enviará de vuelta.
+
+    \end{itemize}
+
+    \item \textbf{Implementación del \textit{Repository Service}:}
+    \begin{itemize}
+        \item Creamos un servicio de repositorio que utiliza \textit{Retrofit} para realizar la solicitud al servidor. Aquí es donde se llama al método definido en la interfaz de la API y se maneja la respuesta.
+
+    \end{itemize}
+
+    \item \textbf{Actualización del \textit{ViewModel}:}
+    \begin{itemize}
+        \item En el \textit{ViewModel} correspondiente, llamamos al método del \textit{Repository} Service y exponemos los resultados para que puedan ser observados por los \textit{fragments} o actividades.
+
+    \end{itemize}
+
+    \item \textbf{Implementación en el \textit{Fragment}:}
+    \begin{itemize}
+        \item Finalmente, en el fragmento correspondiente, observamos los datos expuestos por el \textit{ViewModel} y actualizamos la UI según la respuesta recibida.
+
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Descripción de Cada \textit{Endpoint} Implementado}
+
+\begin{enumerate}
+    \item \textbf{login (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{email}, \texttt{password}
+        \item \textbf{Salida:} \texttt{id\_user}
+        \item \textbf{Descripción:} Autentica al usuario y devuelve su ID único.
+    \end{itemize}
+
+    \item \textbf{signup (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{email}, \texttt{password}, \texttt{quetzalito}
+        \item \textbf{Salida:} \texttt{id\_user}
+        \item \textbf{Descripción:} Registra a un nuevo usuario y devuelve su ID.
+    \end{itemize}
+
+    \item \textbf{forgot\_password (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{email}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Envía un correo electrónico al usuario para restablecer la contraseña.
+    \end{itemize}
+
+    \item \textbf{change\_password (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{new\_password}
+        \item \textbf{Salida:} \texttt{id\_user}, \texttt{200-OK}
+        \item \textbf{Descripción:} Cambia la contraseña del usuario.
+    \end{itemize}
+
+    \item \textbf{send\_video (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{video}
+        \item \textbf{Salida:} \texttt{id\_video}, \texttt{traduction\_lensegua}, \texttt{traduction\_esp}
+        \item \textbf{Descripción:} Envía un video al servidor para su procesamiento y traducción.
+    \end{itemize}
+
+    \item \textbf{report\_video (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{id\_video}, \texttt{report\_message}, \texttt{report\_img}
+        \item \textbf{Salida:} \texttt{id\_user}
+        \item \textbf{Descripción:} Permite al usuario reportar un video especificando un mensaje y una imagen opcional.
+    \end{itemize}
+
+    \item \textbf{fav\_video (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{id\_video}, \texttt{prev\_video}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Marca un video como favorito para un usuario.
+    \end{itemize}
+
+
+    \item \textbf{remove\_fav\_video (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_video}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Elimina un video de los favoritos del usuario basado en su ID.
+    \end{itemize}
+
+    \item \textbf{send\_traducion (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{sentence\_lensegua}, \texttt{id\_sentence}, \texttt{traduction\_esp}
+        \item \textbf{Salida:} \texttt{id\_sentencie}, \texttt{traduction\_esp},
+        \item \textbf{Descripción:} Envía frase en español al servidor para su procesamiento y traducción.
+    \end{itemize}
+
+    \item \textbf{fav\_traduction (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{id\_sentence}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Marca una traducción como favorita para un usuario.
+    \end{itemize}
+
+     \item \textbf{remove\_fav\_traduction (POST)}
+    \begin{itemize}
+      \item \textbf{Entrada:} \texttt{id\_sentence}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Elimina una traducción de los favoritos del usuario basado en su ID.
+    \end{itemize}
+
+    \item \textbf{add\_dictionary (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{id\_word}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Añade una palabra al diccionario personalizado del usuario.
+    \end{itemize}
+
+    \item \textbf{remove\_dictionary (DELETE)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}, \texttt{id\_word}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Elimina una palabra del diccionario personalizado del usuario.
+    \end{itemize}
+
+    \item \textbf{get\_dictionary (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}
+        \item \textbf{Salida:} \texttt{palabras (json)}
+        \item \textbf{Descripción:} Obtiene las palabras del diccionario personalizado del usuario.
+    \end{itemize}
+
+    \item \textbf{get\_user\_info (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}
+        \item \textbf{Salida:} \texttt{email}, \texttt{streak}, \texttt{quetzalito}, \texttt{videos\_fav}, \texttt{traductions\_fav}
+        \item \textbf{Descripción:} Obtiene la información del usuario, incluyendo favoritos y racha de reto.
+    \end{itemize}
+
+    \item \textbf{delete\_user (DELETE)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Elimina la cuenta del usuario del sistema.
+    \end{itemize}
+
+    \item \textbf{add\_streak (POST)}
+    \begin{itemize}
+        \item \textbf{Entrada:} \texttt{id\_user}
+        \item \textbf{Salida:} \texttt{200-OK}
+        \item \textbf{Descripción:} Incrementa la racha del reto diario del usuario en la aplicación.
+    \end{itemize}
+
+
+\end{enumerate}
+
+
+% ----------------------------------------------
+
+\subsection{Publicación en \textit{Play Store}}
+
+Una vez finalizados los procesos de diseño, implementación del diseño en Android y la integración de los servicios, se decidió proceder con la publicación de la aplicación en Play Store. Este paso es fundamental para poner la aplicación a disposición del público en general y requiere seguir un proceso estándar establecido por Google.
+
+\subsubsection{Creación de la Cuenta de Desarrollador}
+
+El primer paso para publicar en Play Store es la creación de una cuenta de desarrollador en Google Play Console. Este proceso implicó:
+
+\begin{itemize}
+    \item \textbf{Registro de la cuenta:} Se requiere un correo electrónico que será asociado con la cuenta de desarrollador. 
+    \item \textbf{Pago de la cuota de registro:} Google cobra una tarifa única de 25 USD para establecer la cuenta de desarrollador. Este es un pago necesario para acceder a las herramientas y recursos que Google proporciona para gestionar las aplicaciones.
+    \item \textbf{Verificación de identidad:} Para garantizar la seguridad y autenticidad, Google solicitó una verificación de identidad, lo que implica proporcionar documentación personal.
+\end{itemize}
+
+\subsubsection{Configuración de la Aplicación en Google Play Console}
+
+Una vez creada la cuenta, se procede a configurar la aplicación en la Play Console:
+
+\begin{itemize}
+    \item \textbf{Información de la aplicación:} Se llena un formulario detallado que incluye:
+    \begin{itemize}
+        \item \textbf{Título y Descripción:} Un título breve y una descripción detallada de la aplicación, destacando sus principales características y funcionalidades.
+        \item \textbf{Clasificación de contenido:} A través de un cuestionario, Google clasifica el contenido de la aplicación según la audiencia objetivo. Esto ayuda a determinar la edad mínima para la que la aplicación es apropiada.
+        \item \textbf{Categoría y etiquetas:} Selección de la categoría (en este cado, comunicación, educación) y etiquetas que mejor describen la aplicación.
+        \item \textbf{Política de privacidad:} Google requiere una política de privacidad que informe a los usuarios sobre cómo se manejarán sus datos. Esta política debe ser clara y debe enlazarse desde la ficha de la aplicación en Play Store.Para ello fue necesario el desarrollo de una \href{https://20candy.github.io/SenasChapinasWeb/}{página web} utilizando \textit{Github Pages.} Adicional a las políticas se decidió inluir información básica de la aplicación. 
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{figuras/pagina_web.png}
+            \caption{Página web}
+            \label{fig:enter-label}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{figuras/pagina_web_herramientas.png}
+            \caption{Página web - Herramientas}
+            \label{fig:enter-label}
+        \end{figure}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.8\linewidth]{figuras/web_fotos.png}
+            \caption{Página web - Fotos}
+            \label{fig:enter-label}
+        \end{figure}
+
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=0.8\linewidth]{figuras/pagina_web_politicas.png}
+            \caption{Políticas de privacidad}
+            \label{fig:enter-label}
+        \end{figure}
+
+        
+    \end{itemize}
+    \item \textbf{Iconos, Imágenes y Vídeos:}
+    Fue necesario diseñar elementos adicionales para la publicación de la aplicación. 
+    
+    \begin{itemize}
+        \item \textbf{Icono de la aplicación:} Un icono de alta resolución que representará la aplicación en Play Store.
+
+        
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=0.25\linewidth]{figuras/icono.png}
+            \caption{Icono}
+            \label{fig:enter-label}
+        \end{figure}
+
+        
+        \item \textbf{Capturas de pantalla:} Imágenes de la aplicación en acción, mostrando sus funcionalidades y diseño.
+
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=1\linewidth]{figuras/capturas_app.png}
+            \caption{Capturas de pantalla}
+            \label{fig:enter-label}
+        \end{figure}
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=1\linewidth]{figuras/promocional_app.png}
+            \caption{\textit{Banner} Promocional}
+            \label{fig:enter-label}
+        \end{figure}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Configuración de Funcionalidades Adicionales}
+
+\begin{itemize}
+    \item \textbf{Política de Privacidad y Eliminación de Datos:} Además de la política de privacidad, Google requiere que las aplicaciones ofrezcan a los usuarios la opción de eliminar sus datos. Se desarrolló una pestaña en la página web que incluye una sección dedicada a la eliminación de datos, permitiendo a los usuarios solicitar la eliminación de su información de forma directa.
+
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=1\linewidth]{figuras/pagina_web_preguntas.png}
+        \caption{Preguntas Frecuentes}
+        \label{fig:enter-label}
+    \end{figure}
+        
+        
+    \item \textbf{Opciones de Distribución:} Configuración de la distribución de la aplicación, como:
+    \begin{itemize}
+        \item \textbf{Países y Regiones:} Selección de los países donde se quiere que la aplicación esté disponible.
+        \item \textbf{Dispositivos y Programas de Google:} Configuración de si la aplicación estará disponible para dispositivos Wear OS, Android TV, etc.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Pruebas Internas y Cerradas}
+
+\begin{itemize}
+    \item \textbf{Prueba Interna:} Inicialmente, se distribuyó la aplicación a un grupo selecto de miembros del equipo para pruebas internas. Esto permitió detectar problemas o errores antes de una prueba más amplia.
+    \item \textbf{Prueba Cerrada:} Luego, la aplicación fue publicada como una prueba cerrada, un paso previo a la publicación completa. Esta etapa permite la retroalimentación de un grupo más amplio de usuarios y es un requisito de Google que la aplicación esté en esta etapa al menos 15 días antes de su publicación en producción. Durante este tiempo, es necesario obtener la aprobación de al menos 20 desarrolladores que prueben la aplicación y verifiquen su funcionalidad y seguridad.
+
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=1\linewidth]{figuras/prueba_cerrada.png}
+        \caption{Prueba Cerrada Play Store}
+        \label{fig:enter-label}
+    \end{figure}
+\end{itemize}
+
+
 
 % ----------------------------------------------
 
