@@ -324,6 +324,19 @@
 	\fi
 \fi
 
+% Discusión
+% --------------------------------------------------------------------------------
+\ifdefined\CAPdiscusion
+	\newpage
+	\chapter{Discusión}
+	\ifdefined\parpordefecto
+		\defaultparformat{discusion}
+	\else
+		\input{discusion}
+	\fi
+\fi
+
+
 % CONCLUSIONES
 % --------------------------------------------------------------------------------
 \ifdefined\CAPconclusiones

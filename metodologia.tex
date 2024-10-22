@@ -590,11 +590,10 @@ Complementando las Personas creadas con anterioridad, se procede a crear su Mapa
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figuras/mapa_empatia_jorge.png}
+    \includegraphics[width=0.9\linewidth]{figuras/mapa_empatia_jorge_correcto.png}
     \caption{Mapa de Empatía - Jorge}
     \label{fig:enter-label}
 \end{figure}
-
 % -----------------------------------------------------------------------------------------
 
 \subsection{Planteamiento del Problema}
@@ -817,16 +816,18 @@ El primer Flujo de Usuario realizado es para Marta. Marta es sorda profunda y tr
 
 Posteriormente se da cuenta que puede guardar el video para usarlo múltiples veces.
 
-\begin{figure}  [H]
-    \centering
-    \includegraphics[width=1\linewidth]{figuras/flujo_usuario2.png}
-    \caption{Guardar Video}
-    \label{fig:enter-label}
+\begin{figure} [H]
+        \centering
+        \includegraphics[width=1\linewidth]{figuras/flujo_usuario_2_correcto.jpg}
+        \caption{Guardar Video}
+        \label{fig:enter-label}
 \end{figure}
+        
+
 
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.3\linewidth]{figuras/flujo_usuario3.jpg}
+    \includegraphics[width=0.4\linewidth]{figuras/flujo_usuario3.jpg}
     \caption{Abrir Video Guardado}
     \label{fig:enter-label}
 \end{figure}
@@ -1352,7 +1353,24 @@ Asimismo, se realizaron ajustes para adaptar la aplicación a diferentes largos 
     \label{fig:enter-label}
 \end{figure}
 
+% -----------------------------------------------------------------------------------------
 
+\subsection{Creación de Ilustraciones para módulo de Diccionario}
+
+En un principio, se había decidido que la aplicación sería distribuida de manera local, compartiendo el archivo \textit{APK} directamente con los usuarios. Sin embargo, conforme fue avanzando el desarrollo y al profundizar en el trabajo con la comunidad, se hizo evidente que la aplicación tenía un valor significativo que podría beneficiar a un público mucho más amplio. Esto llevó a la decisión de publicar la aplicación en la Play Store, lo que marcó un giro importante en el enfoque del proyecto.
+
+Con esta decisión, surgió la necesidad de hacer ajustes importantes, especialmente en lo relacionado con los derechos de autor de las imágenes. Inicialmente, las imágenes del módulo de diccionario provenían de un libro, cuyo uso estaba permitido únicamente en un contexto académico. No obstante, al decidir que la aplicación estaría disponible en una plataforma comercial, fue indispensable crear nuevas imágenes que fueran completamente originales y que cumplieran con las normativas de propiedad intelectual.
+
+Para ello, se emprendió un proceso creativo en el que todas las imágenes fueron redibujadas a mano utilizando Procreate, una herramienta especializada en ilustración digital. Posteriormente, cada una de estas ilustraciones fue refinada y vectorizada mediante Inkscape, un software de diseño que permite trabajar con gráficos escalables. Este proceso no solo garantizó el cumplimiento de las normativas legales, sino que también mejoró la calidad visual del módulo de diccionario, aportando un aspecto más profesional y atractivo.
+
+El trabajo de rediseño fue exhaustivo, ya que cada imagen fue cuidadosamente elaborada para mantener la fidelidad a los gestos y signos utilizados, asegurando que fueran fácilmente reconocibles para los usuarios. Además, se tuvo en cuenta la coherencia visual y la accesibilidad, con el objetivo de ofrecer una experiencia de usuario óptima. Este esfuerzo no solo permitió que la aplicación cumpliera con los requisitos para su publicación, sino que también elevó la calidad general del proyecto.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{figuras/senas.png}
+    \caption{Ilustraciones Señas}
+    \label{fig:enter-label}
+\end{figure}
 
 % ===========================================================================================
 
@@ -1540,11 +1558,19 @@ Con el objetivo de facilitar a los usuarios la posibilidad de cambiar su contras
            
         \begin{figure} [H]
             \centering
-            \includegraphics[width=0.5\linewidth]{figuras/plantilla_correo.png}
+            \includegraphics[width=0.75\linewidth]{figuras/plantilla_correo.png}
             \caption{Plantilla Correo}
             \label{fig:enter-label}
         \end{figure}
-    
+
+    \item \textbf{Envío de correos utilizando SMTP}: Para el envío de correos electrónicos automáticos, se implementó un proceso utilizando el servidor SMTP de Gmail. El sistema genera un correo personalizado para cada usuario, extrayendo automáticamente su nombre a partir de la dirección de correo electrónico. La implementación se realizó mediante la librería \texttt{smtplib} de Python, que establece una conexión segura con el servidor de Gmail y utiliza una contraseña de aplicación para autenticarse. 
+
+    \begin{figure} [H]
+        \centering
+        \includegraphics[width=1\linewidth]{figuras/mailer.png}
+        \caption{Ejemplo de Correo enviado}
+        \label{fig:enter-label}
+    \end{figure}
 \end{itemize}
 
 
@@ -1841,7 +1867,7 @@ Una vez creada la cuenta, se procede a configurar la aplicación en la Play Cons
 
     \begin{figure} [H]
         \centering
-        \includegraphics[width=1\linewidth]{figuras/prueba_cerrada.png}
+        \includegraphics[width=0.9\linewidth]{figuras/prueba_cerrada.png}
         \caption{Prueba Cerrada Play Store}
         \label{fig:enter-label}
     \end{figure}
@@ -1928,3 +1954,90 @@ Las siguientes recomendaciones fueron implementadas tanto a nivel de diseño com
 \subsection{Segunda Prueba - \textit{En-Señas}}
 
 
+Durante todo el proceso de creación de este proyecto, la asociación En-Señas estuvo presente de manera constante, aportando sus ideas y comentarios periódicamente para mejorar iterativamente el producto final de ``Señas Chapinas''. Por ende, no podía faltar una presentación final con ellos. En esta sesión, presentamos la aplicación con todos los módulos integrados, recibiendo valiosas opiniones, sugerencias y recomendaciones finales.
+
+Comenzamos la presentación mostrando cada parte de la aplicación: la grabación de video, la traducción de frases en LENSEGUA, el diccionario y algunas configuraciones. 
+
+En primer lugar, el logo recibió elogios, ya que fue descrito como muy atractivo y representativo del concepto de ``Señas Chapinas'', al combinar de manera armoniosa un quetzal con una mano. Los colores de la aplicación también fueron apreciados, calificándolos como llamativos pero sin perder la seriedad de la propuesta. Se destacó que el uso de colores más vibrantes en el módulo del reto aportaba un aire interactivo y divertido. Además, mencionaron que el diseño de la app les recordaba aplicaciones que ya utilizan, como TikTok, ChatGPT, Duolingo y traductores, lo que facilitaba su uso.
+
+La funcionalidad de grabación de video fue destacada por su sencillez e intuición. Además, la opción de reportar un problema en caso de que surgiera alguna complicación fue considerada una adición importante. Como habían sugerido previamente, la aplicación ahora muestra la traducción tanto en LENSEGUA como en español, lo que no solo facilita la comunicación, sino también ayuda a mejorar el español escrito de los usuarios sordos. Nos brindaron ejemplos concretos sobre cómo la aplicación podría ser útil en contextos como bancos, tiendas, restaurantes y situaciones de emergencia, lo que resalta su relevancia. 
+
+El modulo traductor fue calificado como más fácil de usar en comparación con ChatGPT y, además, se destacó que proporcionaba mejores traducciones. La organización de las frases, con LENSEGUA arriba y español abajo, permitía un uso más práctico y una mejor comprensión. También sugirieron que se integrara la opción de reportar traducciones incorrectas, tal como en la función de video. 
+
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figuras/cambio1.png}
+    \caption{Cambio En-Señas 1}
+    \label{fig:enter-label}
+\end{figure}
+
+
+Al mostrar el diccionario, apreciaron que incluya las palabras más necesarias, pero recomendaron que, en futuras actualizaciones, se utilicen videos para hacer el aprendizaje de LENSEGUA más dinámico y menos tedioso.
+
+En el apartado de perfil, les pareció ideal que se pueda acceder rápidamente a traducciones y videos favoritos para situaciones cotidianas y de emergencia, resaltando que muchas personas en Guatemala no saben LENSEGUA, pero las personas sordas necesitan comunicarse de manera rápida y efectiva.
+
+Al mostrar el reto diario, lo calificaron como entretenido y lo relacionaron con actividades que ellos mismos realizan como profesores de señas. Sugirieron que, cuando el usuario acierte en la selección de la palabra correcta, no solo el botón se vuelva más brillante, sino que también aumente de tamaño para que la seña sea más visible. Además, mencionaron que los colores deben mantenerse consistentes en todas las pruebas, para facilitar la comparación de resultados entre usuarios sordos. Por ejemplo, sería más fácil decir ``el color azul'' en lugar de``el de arriba a la derecha'', ya que señalar posiciones puede ser más complicado en lengua de señas.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figuras/cabmio_2.png}
+    \caption{Cambio En-Señas 2}
+    \label{fig:enter-label}
+\end{figure}
+
+Además, la asociación En-Señas sugirió incluir un tutorial inicial para los usuarios, inspirado en cómo las aplicaciones bancarias presentan sus funcionalidades a través de recorridos guiados por sus distintas secciones, similar a cómo se hizo durante nuestra presentación. La implementación de este tutorial facilitaría a los usuarios comprender y aprovechar al máximo las capacidades de la aplicación desde su primer uso, mejorando significativamente la accesibilidad y la experiencia general.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{figuras/ejemplo_tutorial.jpeg}
+    \caption{Fragmento Tutorial}
+    \label{fig:enter-label}
+\end{figure}
+
+
+Finalmente, agradecieron haber sido incluidos en los agradecimientos de la aplicación y ofrecieron algunas sugerencias para otros los módulos de este proyecto, como el reconocimiento de diferentes señas para una misma palabra y mejoras en el traductor. Señalaron que, para ser una aplicación que trabaja con frases y palabras esenciales, ``Señas Chapinas'' es una aplicación bastante completa, destacando que la tecnología detrás de este tipo de herramientas marca un avance importante para la inclusión en Guatemala.
+
+
+\begin{figure}  [H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figuras/ensenas.png}
+    \caption{Demo En-Señas}
+    \label{fig:enter-label}
+\end{figure}
+
+Por otra parte, luego de presentar la aplicación a los directivos de En-Señas, se procedió a realizar pruebas de usabilidad guiadas con 25 miembros de la asociación, incluyendo personas sordas, familiares de personas sordas, estudiantes de LENSEGUA, profesores y conocidos de la organización. Estos usuarios interactuaron con la aplicación, realizando una serie de tareas que reflejaban el uso típico en escenarios del día a día.
+
+Se llevaron a cabo pruebas de camino crítico, evaluando las funcionalidades esenciales de la aplicación, utilizando como base los mapas de experiencia del cliente y los flujos de usuarios desarrollados en la etapa de diseño. Las pruebas incluyeron los siguientes flujos de usuario:
+
+\begin{itemize}
+    \item Creación de usuario
+    \item Inicio de sesión
+    \item Grabación de video
+    \item Guardado de video
+    \item Apertura de un video guardado
+    \item Traducción de una frase
+    \item Guardado de una frase traducida
+    \item Apertura de una frase guardada
+    \item Búsqueda de una palabra en el diccionario
+    \item Completar un reto diario
+\end{itemize}
+
+
+Los resultados de estas pruebas fueron en su mayoría exitosos, con un índice de éxito general del 90\%. A continuación, se detallan los resultados obtenidos para cada flujo:
+
+\begin{itemize}
+    \item \textbf{Creación de usuario}: un 84\% de las personas completaron la tarea sin inconvenientes, reportando que la interfaz era clara y la información solicitada fácil de ingresar. No obstante, algunas personas no sabían que correo utilizar y les fue difícil ideas una contraseña en el momento. Como sugerencia, varios usuarios mencionaron que les gustaría contar con la opción de iniciar sesión con Facebook o Google para agilizar el proceso.
+    \item \textbf{Inicio de sesión}: El 80\% de los participantes logró iniciar sesión correctamente en su primer intento. Algunos usuarios no recordaban sus contraseñas y, en ciertos casos, sus teléfonos no guardaban las credenciales, lo que afectó el porcentaje de éxito en esta tarea.
+    \item \textbf{Grabación de video}: El 88\% de los usuarios logró grabar un video sin dificultades. Algunos usuarios mayores no comprendieron inicialmente que debían mantener el botón presionado, mientras que los usuarios más jóvenes reconocieron el diseño del botón de grabación, similar a otras plataformas, y lo manejaron sin problemas.
+    \item \textbf{Guardado de video}: El 92\% de los usuarios guardó sus videos con éxito, reportando que el proceso era claro y directo.
+    \item \textbf{Apertura de un video guardado}: El 92\% de los usuarios pudo acceder a los videos guardados fácilmente, destacando que la organización y el acceso a los archivos eran eficientes.
+    \item \textbf{Traducción de una frase}: El 96\% de los usuarios completó con éxito la traducción de frases, señalando que la disposición de la traducción en LENSEGUA y español era muy útil.
+    \item \textbf{Guardado de una frase traducida}: El 96\% de los participantes logró guardar una frase sin problemas. Los usuarios mencionaron que el ícono de guardado era el mismo que se usa para los videos, lo que lo hacía más obvio e intuitivo, destacando la importancia de mantener una iconografía y un diseño visual coherentes en toda la aplicación.
+    \item \textbf{Apertura de una frase guardada}: El 96\% de los usuarios accedió a las frases guardadas sin inconvenientes. Algunos usuarios no entendieron inicialmente que había dos botones separados en la interfaz de perfil: uno para los videos guardados y otro para las frases, lo que generó cierta confusión.
+    \item \textbf{Búsqueda de una palabra en el diccionario}: El 90\% de los participantes logró realizar búsquedas exitosas, encontrando las palabras que necesitaban de manera rápida. Algunos usuarios comentaron que el desplazamiento rápido en la lista de palabras fue un poco confuso al principio, pero una vez comprendido, lo encontraron útil.
+    \item \textbf{Completar un reto diario}: El 92\% de los usuarios completó el reto diario sin problemas, señalando que el sistema de colores y el \textit{feedback} visual al seleccionar la respuesta correcta era efectivo. Se recomendó aumentar el tamaño del botón correcto, como se sugirió anteriormente, para mejorar la visibilidad.
+\end{itemize}
+
+
+En general, las pruebas confirmaron que el diseño y flujo de la aplicaciónes altamente intuitivo, lo que justifica las decisiones tomadas durante el proceso de desarrollo. La aplicación ha demostrado ser accesible y fácil de usar, permitiendo a la comunidad sorda y oyente en Guatemala interactuar de manera efectiva y eficiente en sus actividades diarias.
